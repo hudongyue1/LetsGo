@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://console.zaarapp.com/assets/css/bootstrap.min.css">
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script src="https://console.zaarapp.com/assets/js/jquery.min.js"></script>
+    <script src="https://console.zaarapp.com/assets/js/bootstrap.min.js"></script>
+    <script src="https://console.zaarapp.com/assets/js/jquery.validate.js"></script>
+    <link rel="stylesheet" href="https://console.zaarapp.com/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="https://console.zaarapp.com/assets/css/style.css">
+    <link rel="stylesheet" href="https://console.zaarapp.com/assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.staticfile.org/ionicons/2.0.1/css/ionicons.min.css">
+    <title>用户登录</title>
+
+    <script type="text/javascript">
+        function forget() {
+            document.getElementById('login').style.display = "none"
+            document.getElementById('forgot-form').style.display = "block"
+        }
+
+        function backbtn() {
+            document.getElementById('login').style.display = "block"
+            document.getElementById('forgot-form').style.display = "none"
+        }
+    </script>
+</head>
+
+
+<body>
+<section id="console_login">
+
+
+<div class="login_body">
+<br><br><br><br><br><br>
+    <h1 style="text-align: center">用户账号登录</h1>
+    <!--登录-->
+    {% if msg %}
+        <label style="color: lightgreen">{{ msg }}</label>
+    {% endif %}
+
+	<form class="login_form" id="login" action="/customer/customerLogin/" method="post" autocomplete="off">
+        {% csrf_token %}
+        <div class="form-group">
+			<div class="input_ico">
+                <i class="icon ion-android-contact"></i>
+				<input class="form-control placeholder-no-fix" type="text" placeholder="账号" name="username">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input_ico">
+				<i class="icon ion-unlocked"></i>
+				<input class="form-control placeholder-no-fix password" type="password" maxlength="32" placeholder="密码" name="password" id="password">
+			</div>
+		</div>
+
+		<div class="login_action">
+			<button type="submit" id="login-submit" class="btn btn-blue pull-right">
+			<span class="submit-text"> 登录 <i class="icon_right white_ico"></i></span>
+			</button>
+		</div>
+
+		<div class="forget_pass">
+            <a href="/index/"><i class="icon ion-arrow-left-c"> </i>切换登录端口</a>&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#" id="forget_pass" onclick="forget()">忘记密码</a>
+		</div>
+		<div class="add_account">
+			没有账号---<a href="/customer/createCustomer/">创建账号</a>
+		</div>
+	</form>
+
+	<!-- BEGIN FORGOT PASSWORD FORM -->
+	<form class="login_form" id="forgot-form" action="" method="post" autocomplete="on" style="display: none">
+		<h3>忘记密码？</h3>
+		<p>
+			 请输入你的账号
+		</p>
+		<br>
+		<div class="form-group">
+			<div class="input_ico">
+                <i class="icon ion-android-drafts"></i>
+				<input class="form-control placeholder-no-fix" type="email" placeholder="请输入你的绑定邮箱" name="account">
+			</div>
+		</div>
+		<div class="login_action">
+			<button type="submit" class="btn btn-blue pull-right" name="forgot_password">
+			<span class="submit-text"> 发送邮件 <i class="icon_right white_ico"></i></span>
+			<img src="https://console.zaarapp.com/assets/images/loader.gif" alt="loader" class="form-loader hidden">
+			</button>
+			<br><br><br>
+			<a href="#" id="back-btn" onclick="backbtn()"><i class="icon_left"></i> &nbsp;登录</a>
+		</div>
+	</form>
+	<!-- END FORGOT PASSWORD FORM -->
+
+</div>
+
+</section>
+
+</body>
+</html>

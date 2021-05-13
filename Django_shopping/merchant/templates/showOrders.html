@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        // 更新的函数
+        function goodInfo(goodsID){
+            // 发送更新数据前的查询请求
+            window.location = "/merchant/goodsDetails/" + goodsID;
+        }
+    </script>
+    {% load static %}
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>订单信息</h1>
+    <a style="position: absolute; top: 2%; right: 10%;" class="btn btn-primary" href="/merchant/merchantHome/">返回</a>
+
+<hr width="80%">
+<div>总收入:{{ income }}</div>
+<div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>订单编号</th>
+            <th>商品名称</th>
+            <th>商品图片</th>
+            <th>商品价格</th>
+            <th>购买数量</th>
+            <th>订单创建时间</th>
+            <th>订单修改时间</th>
+            <th>支付金额</th>
+            <th>收货地址</th>
+            <th>运输状态</th>
+            <th>售后状态</th>
+            <th>修改状态</th>
+            <th>查看商品详情</th>
+        </tr>
+    </thead>
+
+    <tbody>
+             {% for order in orderList %}
+                {% for goods in goodsList %}
+                    {% ifequal goods.id order.goodsID %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                        <td>{{ goods.goodsName }}</td>
+                        <td><img width="200px" src="{% static goods.image %}"></td>
+                        <td>{{ goods.price }}</td>
+                        <td>{{ order.goodNum }}</td>
+                        <td>{{ order.starttime }}</td>
+                        <td>{{ order.modtime }}</td>
+                        <td>{{ order.price }}</td>
+                        <td>{{ order.address }}</td>
+                        {% ifequal order.transSta 0%}
+                                <td>未发货</td>
+                            {% else  %}
+                             {% ifequal order.transSta 1%}
+                                  <td>已发货</td>
+                                  {% else %}
+                                     {% ifequal order.transSta 2 %}
+                                        <td>已收货</td>
+                                     {% endifequal %}
+                              {% endifequal %}
+                         {%  endifequal %}
+                          {% ifequal order.afterSta 0%}
+                            <td>未申请售后</td>
+                           {% else  %}
+                             {% ifequal order.afterSta 1%}
+                                    <td>已申请售后</td>
+                                    {% else %}
+                                      {% ifequal order.afterSta 2 %}
+                                      <td>售后服务完成</td>
+                                       {% endifequal %}
+                            {% endifequal %}
+                        {%  endifequal %}
+                        {% ifequal order.paySta -1%}
+                            <td>未激活订单</td>
+                        {% else  %}
+                            {% ifequal order.paySta 0%}
+                                <td>未付款</td>
+                                {% else %}
+                                    {% ifequal order.paySta 1%}
+                                    <td>已付款</td>
+                                    {% endifequal %}
+                            {% endifequal %}
+                        {%  endifequal %}
+            <td>
+                <button id="btnUpdate" onclick="goodInfo({{ order.goodsID }})">查看商品页面</button>
+            </td>
+            </tr>
+                    {% endifequal %}
+                {% endfor %}
+        {% empty %}
+        <p>Sorry, no orders here!</p>
+      {% endfor %}
+    </tbody>
+</table>
+</div>
+</body>
+</html>

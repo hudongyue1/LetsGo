@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员界面：平台优惠</title>
+    <script src="https://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body style="text-align: center">
+<link rel="stylesheet" type="texts" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+
+    <div align="center">
+        <font size="8" color="black">
+            <h><b>平台优惠</b></h>
+        </font>
+    </div>
+
+    <hr width="90%">
+
+    <label class = "first" for = "tel"><b>点击此处，确定是否要进行全平台打折</b></label>
+    <input type="button" name="ifSetDiscount" onclick="button_discount()" value="确定"> <br>
+    <p>{{ msg }}</p>
+
+<div style="display: none" id="form_show">
+    <p>打折数据：请输入一个0到1之间的小数，作为打折的比率（默认为1，即不打折）</p>
+    <form action="/admin/updateDiscount/" method="post" onsubmit="return checkValid()">
+        <input type="text" id="SetDiscount" name="discount_input"/> <br>
+        {% csrf_token %}
+        <br>
+        <button class="btn btn-primary" type="submit">提交打折比率</button>
+    </form>
+</div>
+
+<script>
+    function button_discount()
+    {
+        document.getElementById('form_show').style.display='';
+    }
+    function  checkValid() {
+        var temp_str = "平台打折设置成功，打折率为";
+        if(Number(document.getElementById('SetDiscount').value) <= 1.0 && Number(document.getElementById('SetDiscount').value) > 0)
+        {
+            temp_str += document.getElementById('SetDiscount').value;
+            alert(temp_str);
+            return true;
+        }
+        else
+        {
+            alert("非法输入");
+            return false;
+        }
+    }
+
+</script>
+
+    <a style="position: absolute; top: 2%; left: 2%;" class="btn btn-secondary" href="/admin/adminIndex/">返回</a><br>
+
+</body>
+</html>

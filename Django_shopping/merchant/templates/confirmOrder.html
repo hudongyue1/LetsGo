@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>确认订单</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+</head>
+<body>
+
+<!--本页面显示订单信息-->
+<table class="table table-hover" border="1">
+<!-- 用户customer、商家merchant、商品good、、msg -->
+<br><br><br>
+    <thead>
+        <tr>
+            <th>订单编号</th>
+            <th>商品名称</th>
+            <th>商品图片</th>
+            <th>商品价格</th>
+            <th>购买数量</th>
+        </tr>
+    </thead>
+        <tbody>
+            {% for order in orderList %}
+                {% for goods in goodsList %}
+                    {% ifequal goods.id order.goodsID%}
+                        <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ goods.goodsName }}</td>
+                        <td><img width="200px" src="{% static goods.image %}"></td>
+                        <td>{{ goods.price }}</td>
+                        <td>{{ order.goodsNum }}</td>
+
+                    </tr>
+                    {% endifequal%}
+                {% endfor %}
+                {% empty %}
+                    <tr>
+                    <p align="center">订单信息列表为空</p>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+    <p>总金额为：{{ sum }}</p>
+    <a class="btn btn-secondary" style="position: absolute; top: 2%; left: 2%;" href="/customer/customerCart/">返回购物车</a>
+
+<!--确认按钮(跳转至支付页面)-->
+<div style="position: absolute; bottom: 5%; right: 48%">
+    <a class="btn btn-primary" href="/customer/pay/" >立即支付</a>
+</div>
+
+</body>
+</html>

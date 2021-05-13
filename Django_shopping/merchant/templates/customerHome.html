@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>店铺页面</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- Template Stylesheet -->
+    <link href="../static/css/style.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        // 查看更多此商品信息的函数
+        function moreInfo(goodsID){
+            // 发送更新数据前的查询请求
+            window.location = "/customer/customerGoodsDetails/" + goodsID;
+        }
+
+        // 更新的函数
+        function addToCart(goodsID){
+            // 发送更新数据前的查询请求
+            if(confirm("确定将该商品加入购物车吗?")){
+                window.location = "/customer/addToCart/" + goodsID;
+            }
+        }
+
+        // 删除的函数
+        function deleteGoods(goodsID) {
+            // 确认框
+            if (confirm("确定要删除该商品吗?")) {
+                // 删除
+                url = "/merchant/deleteGoods/" + goodsID;
+
+                window.location = url;
+            }
+        }
+
+        function showInfo(customerID){
+            window.location="/customer/selfInfoCus/";
+    }
+    </script>
+
+    <style type="text/css">
+	    .crust{border:1px lightblue solid;}
+	    .crust:hover{border:2px solid #00FFFF;}
+
+         * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        nav {
+            width: 800px;
+            height: 200px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        ul {
+            width: 200%;
+            height: 100%;
+            animation: picmove 5s linear infinite forwards;
+        }
+        @keyframes picmove {
+            from {
+                transform: translate(0);
+            }
+            to {
+                transform: translate(-750px);
+            }
+        }
+        img {
+            width: 300px;
+            height: 200px;
+            float: left;
+        }
+        ul:hover {
+            animation-play-state: paused;
+        }
+        .col-4{
+        border: 1px solid #ccc;
+        padding: 7px 0px;
+        border-radius: 3px;
+        padding-left:5px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+        }
+        .col-4:focus{
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+        }
+
+	</style>
+</head>
+<body>
+
+<h1 style="text-align: center">你好{{ username }}</h1>
+<div style="text-align: center">
+<form action="/customer/customerHome/" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <input class="col-4" style="width: 300px" type="search" name="goodsName" placeholder="search" value="{{ goodsName }}">
+        <button class="btn btn-primary" type="submit">搜索</button>
+    </div>
+</form><br>
+<form action="/customer/customerHome/" method="post">
+    {% csrf_token %}
+    <select class="col-4" style="width: 300px" name="orderWay">
+      <option value="__None__">无</option>
+      <option value="priceUpper">价格升序</option>
+      <option value="priceLower">价格降序</option>
+    </select>
+    <button class="btn btn-info" type="submit">排序</button>
+</form>
+<form action="/customer/customerHome/" method="post">
+    {% csrf_token %}
+    <input type="search" name="goodsName" placeholder="search" hidden>
+    <br>
+    <button class="btn btn-success" type="submit">显示所有商品</button>
+</form>
+
+</div>
+<span class="dropdown" style="position: absolute; top: 2%; right: 7%;">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    更多
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/customer/customerOrder/">交易订单</a>
+        <a class="dropdown-item" onclick="showInfo({{ customerID }})">个人信息</a>
+        <a class="dropdown-item" href="/customer/customerCart/">购物车</a>
+        <a class="dropdown-item" href="/customer/customerLogout/">退出登录</a>
+    </div>
+</span>
+
+
+<div style="height: 200px;">
+    <nav>
+        <ul>
+            <li><img src="{% static 'images/goods/7905ff3e-c205-11ea-a901-9cb6d0faceb8.jpg' %}" alt="images"></li>
+            <li><img src="{% static 'images/goods/65c77a22-c205-11ea-a404-9cb6d0faceb8.jpg' %}" alt="images"></li>
+            <li><img src="{% static 'images/goods/123e0b24-c205-11ea-8e68-9cb6d0faceb8.jpg' %}" alt="images"></li>
+            <li><img src="{% static 'images/goods/0083a210-c205-11ea-ab28-9cb6d0faceb8.jpg' %}" alt="images"></li>
+            <li><img src="{% static 'images/goods/deb0f398-c205-11ea-a4bb-9cb6d0faceb8.jpg' %}" alt="images"></li>
+            <li><img src="{% static 'images/goods/4a572638-c205-11ea-9ab7-9cb6d0faceb8.jpg' %}" alt="images"></li>
+        </ul>
+    </nav>
+</div>
+<div>
+    <h3 style="text-align: center">可选服务</h3>
+</div>
+
+<hr width="80%">
+{% for goods in goodsList %}
+    {% ifequal goods.frozen 0%}
+    <span class="crust" style=" width:300px;height:400px;display: inline-block">
+        <div class="card" style="display: inline; float: right" onclick="moreInfo({{ goods.id }})">
+            <img src="{% static goods.image %}" class="card-img-top">
+            <div class="card-body">
+                <h3 style="text-align: center">{{ goods.goodsName }}</h3>
+                <h5 style="color: red; text-align: center" class="card-title">仅需{{ goods.price }}元</h5>
+                <p style="text-overflow: clip; overflow: hidden; width: 150px; height: 50px;font-size: small;" class="card-text">{{ goods.description }}</p>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button class="btn btn-success" onclick="addToCart({{ goods.id }})">加入购物车</button>
+        </div>
+    </span>
+    {% endifequal %}
+{% endfor %}
+
+
+</body>
+</html>

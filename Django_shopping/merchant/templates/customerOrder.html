@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+<h1 style="text-align: center">订单详情</h1>
+<!--本页面显示订单信息-->
+<table class="table table-hover" border="1">
+<!-- 用户customer、商家merchant、商品good、、msg -->
+    <thead>
+        <tr>
+            <th>订单编号</th>
+            <th>商品编号</th>
+            <th>商品名称</th>
+            <th>购买数量</th>
+            <th>订单创建时间</th>
+            <th>订单修改时间</th>
+            <th>支付金额</th>
+            <th>收货地址</th>
+            <th>运输状态</th>
+            <th>售后状态</th>
+            <th>支付状态</th>
+            <th>付款</th>
+            <th>收货并评价</th>
+            <th>申请投诉</th>
+        </tr>
+    </thead>
+
+        <tbody>
+            {% for order in orderlist %}
+                {% for goods in goodList %}
+                    {% ifequal goods.id order.goodsID %}
+                        <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ goods.id }}</td>
+                        <td>{{ goods.goodsName }}</td>
+                        <td>{{ order.goodsNum }}</td>
+                        <td>{{ order.starttime }}</td>
+                        <td>{{ order.modtime }}</td>
+                        <td>{{ order.price}}</td>
+                        <td>{{ order.address }}</td>
+                         {% ifequal order.transSta 0%}
+                            <td>未发货</td>
+                        {% else  %}
+                            {% ifequal order.transSta 1%}
+                                <td>已发货</td>
+                                {% else %}
+                                    {% ifequal order.transSta 2 %}
+                                    <td>已收货</td>
+                                    {% endifequal %}
+                            {% endifequal %}
+                        {%  endifequal %}
+                        {% ifequal order.afterSta 0%}
+                            <td>未申请售后</td>
+                            {% else  %}
+                                {% ifequal order.afterSta 1%}
+                                    <td>已申请售后</td>
+                                {% else %}
+                                    {% ifequal order.afterSta 2 %}
+                                    <td>售后服务完成</td>
+                                    {% endifequal %}
+                            {% endifequal %}
+                        {%  endifequal %}
+                        {% ifequal order.paySta -1%}
+                            <td>未激活订单</td>
+                        {% else  %}
+                            {% ifequal order.paySta 0%}
+                                <td>未付款</td>
+                                {% else %}
+                                    {% ifequal order.paySta 1%}
+                                    <td>已付款</td>
+                                    {% endifequal %}
+                            {% endifequal %}
+                        {%  endifequal %}
+                        <td><a href="/customer/visualPay/{{ order.id }}">前往付款</a></td>
+                        <td><a href="/customer/confirmGoods/{{ order.id }}">确认收货</a></td>
+                        <td><a href="/customer/submitComplaints/{{ order.id }}">申请投诉</a></td>
+                    {% endifequal %}
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+<div style="position: absolute; top: 2%; left: 2%">
+    <a class="btn btn-secondary" href="/customer/customerHome/">返回</a>
+</div>
+
+</body>
+</html>

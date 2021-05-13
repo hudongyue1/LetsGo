@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提交投诉信息</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body style="text-align: center">
+    <h>这里是投诉页面</h>
+    <form action="/customer/updateComplaints/" method="post">
+        {% csrf_token %}
+        <p>被投诉商品ID：{{ goods.id }}，名称：{{ goods.goodsName }}</p>
+        <input type="hidden" name="customerID" value="{{ customer.id }}">
+        <input type="hidden" name="orderID" value="{{ order.id }}">
+        <input type="hidden" name="goodsID" value="{{ goods.id }}">
+        <p>请写下您对本订单的投诉</p>
+        <textarea rows="20" cols="80" placeholder="请键入您的投诉内容" name="currComplaints"></textarea><br>
+        <div>
+            <button class="btn btn-primary" type="submit">提交投诉</button>
+            <a href="/customer/customerHome" class="btn btn-secondary">返回</a>
+        </div>
+    </form>
+    <p>{{ msg }}</p>
+</body>
+</html>

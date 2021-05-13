@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="321cd3f3-781d-4ea0-b08e-a856bad8e6c6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1eIAg07LBccmocyQMGkAIXaZ9Yz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\pycharm\project\Django_shopping\merchant\static\images" />
+      <recent name="D:\pycharm\project\Django_shopping\merchant\static\images\goods" />
+      <recent name="D:\pycharm\project\Django_shopping\templates" />
+      <recent name="D:\pycharm\project\Django_shopping\merchant\static\css" />
+      <recent name="D:\pycharm\project\Django_shopping\merchant\templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Django_shopping" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Django_shopping" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="321cd3f3-781d-4ea0-b08e-a856bad8e6c6" name="Default Changelist" comment="" />
+      <created>1593998840257</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593998840257</updated>
+      <workItem from="1593998842161" duration="15447000" />
+      <workItem from="1594024121325" duration="885000" />
+      <workItem from="1594027801982" duration="11294000" />
+      <workItem from="1594083499852" duration="35444000" />
+      <workItem from="1594170586726" duration="29214000" />
+      <workItem from="1594221035643" duration="891000" />
+      <workItem from="1594256614845" duration="43525000" />
+      <workItem from="1594318129323" duration="1881000" />
+      <workItem from="1594336640670" duration="4767000" />
+      <workItem from="1594341430764" duration="7000" />
+      <workItem from="1594345541333" duration="11921000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594313443115">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1594313443115" />
+    <state x="355" y="180" key="FileChooserDialogImpl" timestamp="1594293834067">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="355" y="180" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594293834067" />
+    <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1594092441027">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1594092441027" />
+    <state x="34" y="106" width="1350" height="638" key="dock-window-1" timestamp="1594307453990">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="34" y="106" width="1350" height="638" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1594307453990" />
+    <state x="93" y="93" width="1350" height="638" key="dock-window-2" timestamp="1594307453990">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="dock-window-2/0.0.1536.824@0.0.1536.824" timestamp="1594307453990" />
+    <state x="608" y="183" key="refactoring.ChangeSignatureDialog" timestamp="1594354313938">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="608" y="183" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1594354313938" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1594336996967">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1594336996967" />
+  </component>
+</project>

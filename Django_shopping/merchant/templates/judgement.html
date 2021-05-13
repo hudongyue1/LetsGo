@@ -1,0 +1,42 @@
+<!--****-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品评价页面</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body style="text-align: center">
+    <h>这里是商品评价页面</h>
+    <p>目标订单是商品{{ goods.name }}（id编号为{{ goods.id }}）</p>
+    <form action="/customer/judgement/{{ goods.id }}/" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="{{ goods.id }}" name="tempGoods">
+        <p>请写下您对本商品的评价~</p>
+        <textarea rows="20" cols="80" placeholder="请键入您的评价" name="temp_judgement">{% ifnotequal content "__None__" %}{{ content }}{% endifnotequal %}</textarea>
+        {% ifequal content "__None__" %}
+            <p>请对此次购买进行打分</p>
+        <div>
+            <label><input type="radio" name="group2" value="0" style="align: bottom;margin-left:20pt;margin-right:10pt"/>0分</label>
+            <label><input type="radio" name="group2" value="1" style="align: bottom;margin-left:20pt;margin-right:10pt"/>1分</label>
+            <label><input type="radio" name="group2" value="2" style="align: bottom;margin-left:20pt;margin-right:10pt"/>2分</label>
+            <label><input type="radio" name="group2" value="3" style="align: bottom;margin-left:20pt;margin-right:10pt"/>3分</label>
+            <label><input type="radio" name="group2" value="4" style="align: bottom;margin-left:20pt;margin-right:10pt"/>4分</label>
+            <label><input type="radio" name="group2" value="5" style="align: bottom;margin-left:20pt;margin-right:10pt"/>5分</label>
+        </div>
+
+
+        {% endifequal %}
+        <div>
+            <button class="btn btn-primary" type="submit" onclick="alert('评价成功！')">提交评价</button>
+            <a href="/customer/customerHome/" class="btn btn-secondary">返回</a>
+        </div>
+    </form>
+
+    <div>
+
+    </div>
+</body>
+
+</html>

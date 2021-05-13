@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎，管理员{{adminUsername}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <!-- 显示标题  -->
+    <div align="center">
+        <font size="8" color="black">
+            <h><b>管理员个人主页</b></h>
+        </font>
+
+        <font size="5" color="black">
+            <h4>欢迎，管理员{{adminUsername}}</h4>
+        </font>
+    </div>
+
+    <hr width="90%">
+
+<div style="text-align: center">
+    <h1><a href="/admin/complaints/">查看所有投诉信息</a></h1>
+    <h1><a href="/admin/frozeIndex/">冻结商品/商家信息</a></h1>
+    <h1><a href="/admin/discount/">设置平台优惠</a></h1>
+</div>
+
+    <a style="position: absolute; left: 2%; top: 2%;" class="btn btn-secondary"  href="/admin/adminLogout/">退出</a>
+
+</body>
+
+</html>

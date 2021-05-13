@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员界面：投诉信息</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div align="center">
+        <font size="8" color="black">
+            <h><b>投诉信息</b></h>
+        </font>
+    </div>
+
+    <hr width="90%">
+    <div style="position: absolute; top: 2%; left: 2%">
+    <a class="btn btn-secondary" href="/admin/adminIndex/">返回</a>
+    </div>
+    <table class="table table-hover" border="1">
+        <thead>
+            <tr>
+                <th>投诉信息ID</th>
+                <th>投诉用户ID</th>
+                <th>订单编号</th>
+                <th>投诉内容</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td colspan="8" style="text-align: center;">以下为未处理投诉</td>
+            </tr>
+            {% for single_complaint in comListYet %}
+                <tr>
+                    <td>{{ single_complaint.id }}</td>
+                    <td>{{ single_complaint.cusID }}</td>
+                    <td>{{ single_complaint.orderID }}</td>
+                    <td>{{ single_complaint.content }}</td>
+                    <td><a href="/admin/dealComp/{{ single_complaint.id }}" >点击处理</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" style="text-align: center; background-color: #ccc">暂无数据</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="8" style="text-align: center;">以下为已处理投诉</td>
+            </tr>
+            {% for single_complaint in comListDone %}
+                <tr>
+                    <td>{{ single_complaint.id }}</td>
+                    <td>{{ single_complaint.cusID }}</td>
+                    <td>{{ single_complaint.orderID }}</td>
+                    <td>{{ single_complaint.content }}</td>
+                    <td>已处理</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" style="text-align: center; background-color: #ccc">暂无数据</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+
+    </table>
+</body>
+</html>

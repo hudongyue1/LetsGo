@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <title>商品详情</title>
+</head>
+<body>
+<span>
+    <a class="btn btn-secondary" href="/merchant/merchantHome/" style="float: left">&nbsp;<-返回&nbsp;</a>
+    <h4 style="text-align: center;">商品详情(商品类型: {{ goods.type }})</h4>
+</span>
+<br>
+<div>
+
+     <div style="border: 30px">
+
+        <img width="70%" src="{% static goods.image %}" style="float: left">
+    </div>
+
+    <div style="position: absolute; top: 10%; right: 3%">
+        <h1 style="text-align: center">{{ goods.goodsName }}</h1>
+        <hr>
+        <h5 style="color: red; text-align: center" class="card-title">仅需{{ goods.price }}元</h5>
+        <hr>
+        <h5 style="color: red; text-align: center" class="card-title">库存:{{ goods.num }}个</h5>
+        <p  style="border: solid 1px lightgray; width: 350px; height: 300px; word-wrap: break-word; overflow: paged-y">{{ goods.description }}</p>
+        <h5>评价</h5>
+        <div style="border: solid 1px lightgray;">
+            {% for common in commentList %}
+                <p style="width: 350px; height: 200px; word-wrap: break-word; overflow: paged-y">{{ common.content }}</p>
+                {% empty %}
+                <label style="text-align: center">暂无评价</label>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+     <i style="position: absolute; bottom: 2%; left: 2%;">剩余{{ goods.num }}件</i>
+</div>
+</body>
+</html>
